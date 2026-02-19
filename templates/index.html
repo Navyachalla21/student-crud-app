@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login-container">
+    <h2>Admin Login</h2>
+    <form method="POST">
+        <label>Username</label>
+        <input type="text" name="username" required placeholder="Enter username">
+
+        <label>Password</label>
+        <div class="password-container">
+            <input type="password" name="password" id="password" required placeholder="Enter password">
+            <span id="togglePassword">👁️</span>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', function () {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.textContent = type === 'password' ? '👁️' : '🙈';
+    });
+</script>
+{% endblock %}

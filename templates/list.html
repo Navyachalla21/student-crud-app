@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="list-container">
+    <h2>Student List</h2>
+
+    <!-- Google Style Search Bar -->
+    <form method="GET" class="search-form" id="searchForm">
+        <div class="search-wrapper">
+            <span class="search-icon">🔎</span>
+            <input 
+                type="search" 
+                name="search" 
+                placeholder="Search by Register Number..." 
+                value="{{ search or '' }}" 
+                oninput="autoSearch()"
+                autocomplete="off">
+        </div>
+    </form>
+
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Reg No</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Branch</th>
+                <th>Semester</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for student in students %}
+            <tr class="{% if search and search in student[1] %}highlight-row{% endif %}">
+                <td>{{ student[0] }}</td>
+                <td>{{ student[1] }}</td>
+                <td>{{ student[2] }}</td>
+                <td>{{ student[3] }}</td>
+                <td>{{ student[4] }}</td>
+                <td>{{ student[5] }}</td>
+                <td>{{ student[6] }}</td>
+                <td>{{ student[7] }}</td>
+                <td>{{ student[8] }}</td>
+                <td>
+                    <a href="{{ url_for('edit', id=student[0]) }}" class="edit-btn">Edit</a>
+                    |
+                    <a href="{{ url_for('delete', id=student[0]) }}" 
+                       onclick="return confirm('Are you sure?')" 
+                       class="delete-btn">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+<script>
+function autoSearch() {
+    // Auto submit when typing (Google-like search)
+    clearTimeout(window.searchTimeout);
+    window.searchTimeout = setTimeout(function () {
+        document.getElementById("searchForm").submit();
+    }, 500); // 0.5 second delay for smooth UX
+}
+</script>
+
+{% endblock %}

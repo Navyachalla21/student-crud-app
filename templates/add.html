@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h2>Add Student</h2>
+    <form method="POST">
+        <label>Register Number</label>
+        <input type="text" name="reg_no" required placeholder="Enter Register Number">
+
+        <label>Name</label>
+        <input type="text" name="name" required placeholder="Enter Full Name">
+
+        <label>Date of Birth</label>
+        <input type="date" name="dob">
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter Email">
+
+        <label>Phone</label>
+        <input type="text" name="phone" placeholder="Enter Phone Number">
+
+        <label>Branch</label>
+        <input type="text" name="branch" placeholder="Enter Branch">
+
+        <label>Semester</label>
+        <input type="text" name="semester" placeholder="Enter Semester">
+
+        <label>Address</label>
+        <textarea name="address" placeholder="Enter Address"></textarea>
+
+        <button type="submit">Add Student</button>
+    </form>
+    <a href="{{ url_for('dashboard') }}" class="back-btn">← Back to Dashboard</a>
+</div>
+{% endblock %}

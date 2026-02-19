@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-container">
+    <h2>Welcome, {{ admin }}</h2>
+    <div class="cards">
+        <a href="{{ url_for('add_student') }}" class="card">Add Student</a>
+        <a href="{{ url_for('student_list') }}" class="card">View Students</a>
+    </div>
+</div>
+{% endblock %}
