@@ -1,0 +1,14 @@
+# Ignore SQLite database
+database.db
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+venv/
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
